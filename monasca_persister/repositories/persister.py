@@ -58,7 +58,7 @@ class Persister(object):
             self._data_points = []
             self._consumer.commit()
         except Exception as ex:
-            if "partial write: points beyond retention policy dropped" in ex.message:
+            if "partial write: points beyond retention policy dropped" in ex.content:
                 LOG.warning("Some points older than retention policy were dropped")
                 self._data_points = []
                 self._consumer.commit()
