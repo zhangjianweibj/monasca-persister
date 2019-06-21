@@ -72,6 +72,8 @@ class Persister(object):
             else:
                 LOG.exception("Error writing to database: {}"
                               .format(self._data_points))
+                self._data_points = []
+                self._consumer.commit()
                 raise ex
 
     def run(self):
