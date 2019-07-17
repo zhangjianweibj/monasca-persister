@@ -39,6 +39,7 @@ class Persister(object):
             kafka_conf.zookeeper_path,
             kafka_conf.group_id,
             kafka_conf.topic,
+            client_id=kafka_conf.client_id,
             repartition_callback=self._flush,
             commit_callback=self._flush,
             commit_timeout=kafka_conf.max_wait_time_seconds)
