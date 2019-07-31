@@ -33,11 +33,15 @@ class Persister(object):
 
         self._batch_size = kafka_conf.batch_size
 
+        def print_assignment(consumer, partitions):
+            print('Assignment:', partitions)
+        
         self._consumer = consumer.KafkaConsumer(
             kafka_conf.uri,
             kafka_conf.group_id,
             kafka_conf.topic,
-            self._batch_size)
+            self._batch_size,
+            repartition_callback=print_assignment)
 
         self.repository = repository()
 
