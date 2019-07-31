@@ -29,8 +29,10 @@ VERBOSE                         true              If true, enable info logging
 ZOOKEEPER_URI                   zookeeper:2181    The host and port for zookeeper
 KAFKA_URI                       kafka:9092        The host and port for kafka
 KAFKA_ALARM_HISTORY_BATCH_SIZE  1000              Kafka consumer takes messages in a batch
+KAFKA_ALARM_HISTORY_PROCESSORS  1                 Number of processes for alarm history topic
 KAFKA_ALARM_HISTORY_WAIT_TIME   15                Seconds to wait if the batch size is not reached
 KAFKA_METRICS_BATCH_SIZE        1000              Kafka consumer takes messages in a batch
+KAFKA_METRICS_PROCESSORS        1                 Number of processes for metrics topic
 KAFKA_METRICS_WAIT_TIME         15                Seconds to wait if the batch size is not reached
 DATABASE_BACKEND                influxdb          Select for backend database
 INFLUX_HOST                     influxdb          The host for influxdb
@@ -45,6 +47,7 @@ CASSANDRA_USER                  mon_persister     Cassandra user name
 CASSANDRA_PASSWORD              password          Cassandra password
 CASSANDRA_KEY_SPACE             monasca           Keyspace name where metrics are stored
 CASSANDRA_CONNECTION_TIMEOUT    5                 Cassandra timeout in seconds
+CASSANDRA_MAX_CACHE_SIZE        20000000          Maximum number of cached metric definition entries in memory
 CASSANDRA_RETENTION_POLICY      45                Data retention period in days
 STAY_ALIVE_ON_FAILURE           false             If true, container runs 2 hours even start fails
 =============================== ================= ================================================
