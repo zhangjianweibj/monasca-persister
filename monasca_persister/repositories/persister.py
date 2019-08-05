@@ -80,7 +80,9 @@ class Persister(object):
         try:
             for raw_message in self._consumer:
                 try:
+                    print(raw_message)
                     message = raw_message[1]
+                    print("enter")
                     data_point = self.repository.process_message(message)
                     self._data_points.append(data_point)
                 except Exception:
