@@ -26,7 +26,8 @@ LOG = log.getLogger(__name__)
 class Persister(object):
 
     def __init__(self, kafka_conf, zookeeper_conf, repository):
-
+        
+        LOG.info("enter init:")
         self._data_points = []
 
         self._kafka_topic = kafka_conf.topic
@@ -43,11 +44,12 @@ class Persister(object):
             self._batch_size,
             repartition_callback=self._flush,
             commit_callback=self._flush,max_commit_interval=kafka_conf.max_wait_time_seconds)
-
+        LOG.info("after consumer:")
         self.repository = repository()
 
     def _flush(self):
         print("enter flush:")
+        LOG.info("enter flush:")
         if not self._data_points:
             return
 
@@ -80,10 +82,13 @@ class Persister(object):
 
     def run(self):
         print("enter run method:")
+        LOG.info("enter run method:")
         try:
             for raw_message in self._consumer:
                 try:
                     print(raw_message)
+                    LOG.info("raw_messages:")
+                    LOG.info(raw_message)
                     message = raw_message[1]
                     print("enter")
                     data_point = self.repository.process_message(message)
