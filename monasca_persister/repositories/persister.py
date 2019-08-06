@@ -41,7 +41,8 @@ class Persister(object):
             kafka_conf.group_id,
             kafka_conf.topic,
             self._batch_size,
-            repartition_callback=print_assignment)
+            repartition_callback=self._flush,
+            commit_callback=self._flush,max_commit_interval=kafka_conf.max_wait_time_seconds)
 
         self.repository = repository()
 
