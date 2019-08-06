@@ -43,7 +43,7 @@ class Persister(object):
             kafka_conf.topic,
             self._batch_size,
             repartition_callback=self._flush,
-            commit_callback=self._flush,max_commit_interval=kafka_conf.max_wait_time_seconds)
+            commit_callback=self.run,max_commit_interval=kafka_conf.max_wait_time_seconds)
         LOG.info("after consumer:")
         self.repository = repository()
 
