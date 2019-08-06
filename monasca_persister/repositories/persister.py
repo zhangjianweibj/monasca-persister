@@ -47,6 +47,7 @@ class Persister(object):
         self.repository = repository()
 
     def _flush(self):
+        print("enter flush:")
         if not self._data_points:
             return
 
@@ -80,7 +81,7 @@ class Persister(object):
     def run(self):
         print("enter run method:")
         try:
-            for raw_message in self._consumer.value():
+            for raw_message in self._consumer:
                 try:
                     print(raw_message)
                     message = raw_message[1]
