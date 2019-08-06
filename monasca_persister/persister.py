@@ -91,9 +91,11 @@ def clean_exit(signum, frame=None):
 
 def start_process(respository, kafka_config):
     LOG.info("start process: {}".format(respository))
+    print("enter start_prcess:")  
     m_persister = persister.Persister(kafka_config, cfg.CONF.zookeeper,
                                       respository)
     m_persister.run()
+    print("after run:")
 
 
 def prepare_processes(conf, repo_driver):
@@ -144,6 +146,7 @@ def main():
 
         ''')
         for process in processors:
+            print("processors start:")
             process.start()
 
         # The signal handlers must be added after the processes start otherwise
