@@ -78,8 +78,9 @@ class Persister(object):
                 raise ex
 
     def run(self):
+        print("enter run method:")
         try:
-            for raw_message in self._consumer:
+            for raw_message in self._consumer.value():
                 try:
                     print(raw_message)
                     message = raw_message[1]
