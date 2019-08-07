@@ -18,7 +18,7 @@ from oslo_serialization import jsonutils
 
 def parse_measurement_message(message):
     print(message)
-    decoded_message = jsonutils.loads(message.message.value)
+    decoded_message = jsonutils.loads(message)
 
     metric = decoded_message['metric']
 
