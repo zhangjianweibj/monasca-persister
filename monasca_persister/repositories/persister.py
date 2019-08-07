@@ -89,7 +89,7 @@ class Persister(object):
                     print(raw_message)
                     LOG.info("raw_messages:")
                     LOG.info(raw_message)
-                    message = raw_message[1]
+                    message = raw_message
                     print("enter")
                     data_point = self.repository.process_message(message)
                     self._data_points.append(data_point)
