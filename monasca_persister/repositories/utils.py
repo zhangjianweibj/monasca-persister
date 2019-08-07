@@ -14,10 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import ujson as json
-
+from oslo_serialization import jsonutils
 
 def parse_measurement_message(message):
-    decoded_message = json.loads(message.message.value)
+    print("message is :"+message)
+    decoded_message = jsonutils.loads(message.message.value)
 
     metric = decoded_message['metric']
 
