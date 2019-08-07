@@ -28,10 +28,9 @@ kafka_metrics_opts = [
                 help='Enable metrics persister',
                 default=True),
     # NOTE(czarneckia) default by reference does not work with ListOpt
-    cfg.ListOpt('uri',
+    cfg.StrOpt('uri',
                 help='Comma separated list of Kafka broker host:port',
-                default=['127.0.0.1:9092'],
-                item_type=types.HostAddressPortType()),
+                default='kafka-0.kafka-svc:9092'),
     cfg.StrOpt('group_id',
                help='Kafka Group from which persister get data',
                default='1_metrics'),
